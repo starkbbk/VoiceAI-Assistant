@@ -10,8 +10,8 @@ export default function HistoryPanel() {
 
   return (
     <div className="glass-panel w-full rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-[500px]">
-      <div className="w-full flex items-center justify-between p-4 bg-black/20 hover:bg-white/5 transition-colors gap-4">
-        <div className="flex items-center gap-3 shrink-0">
+      <div className="w-full flex flex-col md:flex-row md:items-center justify-between p-4 bg-black/20 hover:bg-white/5 transition-colors gap-4">
+        <div className="flex items-center gap-3 shrink-0 self-start md:self-auto">
           <span className="text-lg">📚</span>
           <h2 className="text-sm font-semibold tracking-wider text-gray-300 uppercase">
             Q&A History {hasHistory && <span className="bg-primary px-2 py-0.5 rounded-full text-[10px] text-white ml-2">{history.length}</span>}
@@ -19,7 +19,7 @@ export default function HistoryPanel() {
         </div>
 
         <form 
-          className="flex flex-1 max-w-lg gap-2"
+          className="flex w-full md:flex-1 md:max-w-lg gap-2"
           onSubmit={(e) => {
             e.preventDefault();
             const val = textInput.trim();

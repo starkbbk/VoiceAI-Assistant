@@ -44,22 +44,22 @@ export default function Header({ onToggleSidebar, isSidebarOpen }) {
   };
 
   return (
-    <header className="glass-panel w-full py-4 px-6 grid grid-cols-3 items-center z-50 sticky top-0 bg-black/60 backdrop-blur-md">
+    <header className="glass-panel w-full py-4 px-4 sm:px-6 flex items-center justify-between z-50 sticky top-0 bg-black/60 backdrop-blur-md relative">
       {/* LEFT: Branding */}
-      <div className="flex items-center gap-3 justify-start">
-        <div className="bg-primary/20 p-2 rounded-lg text-2xl">🎙️</div>
+      <div className="flex items-center gap-3 justify-start shrink-0">
+        <div className="bg-primary/20 p-2 rounded-lg text-xl sm:text-2xl">🎙️</div>
         <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 hidden sm:block">
-          VoiceAI Assistant
+          VoiceAI
         </h1>
       </div>
       
-      {/* CENTER: Status Indicator */}
-      <div className="flex justify-center">
+      {/* CENTER: Status Indicator (Hidden on extra small screens) */}
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <StatusIndicator />
       </div>
 
       {/* RIGHT: Status & Controls */}
-      <div className="flex items-center gap-4 justify-end">
+      <div className="flex items-center gap-2 sm:gap-4 shrink-0">
         {/* Hidden File Input */}
         <input 
           type="file" 
@@ -99,9 +99,9 @@ export default function Header({ onToggleSidebar, isSidebarOpen }) {
           <span className="text-lg">{isListening ? '⏸️' : '🎙️'}</span>
         </button>
 
-        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/30 border border-white/5">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 border border-white/5">
           <div className={`w-2 h-2 rounded-full shadow-lg ${isConnected ? 'bg-secondary animate-pulse-slow shadow-secondary/50' : 'bg-red-500 shadow-red-500/50'}`} />
-          <span className="text-sm text-gray-300 font-medium hidden sm:block">
+          <span className="text-sm text-gray-300 font-medium hidden lg:block">
             {isConnected ? 'Connected to AI Server' : 'Disconnected'}
           </span>
         </div>
