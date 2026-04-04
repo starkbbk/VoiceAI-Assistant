@@ -44,7 +44,7 @@ function AppContent() {
         <div className="lg:col-span-2 w-full">
           <HistoryPanel />
         </div>
-        <div className="lg:col-span-1 w-full">
+        <div className="hidden lg:block lg:col-span-1 w-full">
           <TranscriptBox />
         </div>
       </main>
