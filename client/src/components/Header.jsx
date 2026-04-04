@@ -17,8 +17,7 @@ export default function Header({ onToggleSidebar, isSidebarOpen }) {
     formData.append('pdfFile', file);
 
     try {
-      // Assuming server runs on the same host but port 5001
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://voiceai-assistant.onrender.com';
       const response = await fetch(`${API_URL}/api/upload-pdf`, {
         method: 'POST',
         body: formData,
