@@ -18,21 +18,23 @@ function setPdfContext(text) {
  */
 async function generateAnswer(question) {
   try {
-    let instruction = "You are a concise, helpful AI assistant. Give short, accurate answers in 3-5 sentences max.";
+    let instruction = "You are a fast, concise assistant. Answer in 1-2 sentences max. Be direct.";
     
     if (pdfContextString) {
-      instruction += `\n\nCRITICAL CONTEXT INSTRUCTION:\nYou have been provided with a private document below. If the user asks questions about "you" (e.g., "What is your name?", "What is your experience?", "Who are you?"), you MUST adopt the persona, name, and identity described in this document. \n\nDo NOT say you are a Google language model. Instead, answer as if you are the person described in the resume/document.\n\nDOCUMENT TEXT:\n${pdfContextString}`;
-    } else {
-      instruction += " If the input is not a clear question, respond with a brief helpful comment.";
+      instruction += ` You have access to this document. If asked about identity/name/experience, answer AS the person in the document — never say you're an AI.\n\nDOCUMENT:\n${pdfContextString}`;
     }
 
     // Gemma models don't support systemInstruction via config,
     // so we prepend the instruction to the prompt
-    const fullPrompt = `${instruction}\n\nUser question: ${question}`;
+    const fullPrompt = `${instruction}\n\nQuestion: ${question}\nAnswer:`;
 
     const response = await ai.models.generateContent({
-      model: 'gemma-3-27b-it',
+      model: 'gemma-3-4b-it',
       contents: fullPrompt,
+      config: {
+        maxOutputTokens: 120,
+        temperature: 0.3,
+      }
     });
 
     return response.text.trim();
