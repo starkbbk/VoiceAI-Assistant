@@ -9,7 +9,7 @@ export default function HistoryPanel() {
   const hasHistory = history.length > 0;
 
   return (
-    <div className="glass-panel w-full rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-[500px]">
+    <div className="glass-panel w-full rounded-none lg:rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-[calc(100vh-73px)] lg:h-[500px]">
       <div className="w-full flex flex-col md:flex-row md:items-center justify-between p-4 bg-black/20 hover:bg-white/5 transition-colors gap-4">
         <div className="flex items-center gap-3 shrink-0 self-start md:self-auto">
           <span className="text-lg">📚</span>

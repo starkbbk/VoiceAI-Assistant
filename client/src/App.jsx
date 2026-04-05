@@ -11,7 +11,7 @@ function AppContent() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col relative pb-10 overflow-x-hidden">
+    <div className="h-screen flex flex-col relative overflow-x-hidden overflow-y-hidden">
       {/* Background Orbs Effect */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px]" />
@@ -40,11 +40,11 @@ function AppContent() {
         </div>
       </div>
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 grid grid-cols-1 lg:grid-cols-3 gap-6 relative items-start">
-        <div className="lg:col-span-2 w-full">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mt-2 lg:mt-4 grid grid-cols-1 lg:grid-cols-3 gap-6 relative overflow-hidden">
+        <div className="lg:col-span-2 w-full h-full">
           <HistoryPanel />
         </div>
-        <div className="hidden lg:block lg:col-span-1 w-full">
+        <div className="hidden lg:block lg:col-span-1 w-full h-full">
           <TranscriptBox />
         </div>
       </main>
