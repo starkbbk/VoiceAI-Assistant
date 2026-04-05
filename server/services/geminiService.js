@@ -26,14 +26,13 @@ async function generateAnswer(question) {
       instruction += " If the input is not a clear question, respond with a brief helpful comment.";
     }
 
+    // Gemma models don't support systemInstruction via config,
+    // so we prepend the instruction to the prompt
+    const fullPrompt = `${instruction}\n\nUser question: ${question}`;
+
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: question,
-      config: { 
-        systemInstruction: instruction,
-        temperature: 0.7,
-        maxOutputTokens: 1000
-      }
+      model: 'gemma-3-27b-it',
+      contents: fullPrompt,
     });
 
     return response.text.trim();
