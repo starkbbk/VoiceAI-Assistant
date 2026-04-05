@@ -67,8 +67,22 @@ export default function HistoryPanel() {
               <div className="w-full h-px bg-white/5" />
               
               <div className="flex gap-2 text-sm text-green-50 bg-green-500/10 border border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.15)] p-3 rounded-lg">
-                <span className="text-green-400 font-bold drop-shadow-[0_0_5px_rgba(34,197,94,0.5)]">A:</span>
-                <p className="leading-relaxed">{item.answer}</p>
+                <span className="text-green-400 font-bold drop-shadow-[0_0_5px_rgba(34,197,94,0.5)] shrink-0">A:</span>
+                <div className="leading-relaxed flex flex-col gap-1">
+                  {item.answer.split('\n').map((line, j) => {
+                    const isBullet = line.trim().startsWith('•') || line.trim().startsWith('-') || line.trim().startsWith('*');
+                    const text = isBullet ? line.trim().replace(/^[•\-\*]\s*/, '') : line.trim();
+                    if (!text) return null;
+                    return isBullet ? (
+                      <div key={j} className="flex items-start gap-2">
+                        <span className="text-green-400 mt-0.5 shrink-0">•</span>
+                        <span>{text}</span>
+                      </div>
+                    ) : (
+                      <p key={j}>{text}</p>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           ))

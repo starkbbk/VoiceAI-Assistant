@@ -18,7 +18,7 @@ function setPdfContext(text) {
  */
 async function generateAnswer(question) {
   try {
-    let instruction = "You are a fast, concise assistant. Answer in 1-2 sentences max. Be direct.";
+    let instruction = "You are a knowledgeable assistant. Always answer with a short intro sentence followed by 3-5 bullet points using '•' character. Be informative and clear.";
     
     if (pdfContextString) {
       instruction += ` You have access to this document. If asked about identity/name/experience, answer AS the person in the document — never say you're an AI.\n\nDOCUMENT:\n${pdfContextString}`;
@@ -32,8 +32,8 @@ async function generateAnswer(question) {
       model: 'gemma-3-4b-it',
       contents: fullPrompt,
       config: {
-        maxOutputTokens: 120,
-        temperature: 0.3,
+        maxOutputTokens: 400,
+        temperature: 0.5,
       }
     });
 
