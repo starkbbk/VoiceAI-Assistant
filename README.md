@@ -1,6 +1,6 @@
 # VoiceAI Assistant
 
-![VoiceAI Assistant UI](./voice-ai-screenshot.png) <!-- Placeholder for screenshot -->
+
 
 ## 1. PROJECT OVERVIEW
 
